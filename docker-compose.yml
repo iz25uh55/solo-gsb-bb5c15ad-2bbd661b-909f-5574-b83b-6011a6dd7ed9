@@ -1,0 +1,11 @@
+services:
+  range-plan:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # 单次回源长度上限（字节）；请求中也可逐次携带 max_fetch 覆盖
+      MAX_FETCH_DEFAULT: "8388608"
+      # 允许合并的最大间隙（字节）；请求中也可逐次携带 max_gap 覆盖
+      MAX_GAP_DEFAULT: "65536"
+    restart: unless-stopped
